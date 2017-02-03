@@ -1,6 +1,7 @@
 # mybatisDemo3
 ## Spring集成MyBatis升级版
 1. 去掉MyBatisCfg.xml配置文件
+
 在没有Spring的环境下我们单纯使用MyBatis ORM框架时，我们是通过MyBatisCfg.xml完成sqlSessionFactory的构建工作，
 如果使用Spring则这部分配置的内容可以完全由Spring容器替代，具体实现如下：
 ```
