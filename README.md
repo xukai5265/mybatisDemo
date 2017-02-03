@@ -94,6 +94,7 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
 如果习惯两者结合使用，当然还是可以指定MyBatis配置文件的，增加属性：<property name="configLocation" value="classpath:MyBatisCfg.xml"></property>
 
 **2.映射接口类自动扫描配置**
+
 在示例3的applicationContext.xml配置文件中有一段实现BookTypeDAO接口实例的创建工厂，配置如下：
 ```
     <!-- 创建一个booTypeDAO -->
@@ -126,6 +127,7 @@ sqlSessionTemplate： 已废弃 。它的功能也是相当于sqlSessionFactory�
 sqlSessionTemplateBeanName：指定需要使用的sqlSessionTemplate对应的bean名称。
 
 **3.引入属性配置文件db.properties**
+
 从示例3的配置代码中可以发现数据库连接字符信息同时出现在两个位置，分别是applicationContext.xml与db.properties文件中，如下所示：
 ```
     <!--定义一个jdbc数据源，创建一个驱动管理数据源的bean -->
