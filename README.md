@@ -92,6 +92,7 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
 }
 ```
 如果习惯两者结合使用，当然还是可以指定MyBatis配置文件的，增加属性：<property name="configLocation" value="classpath:MyBatisCfg.xml"></property>
+
 2. 映射接口类自动扫描配置
 在示例3的applicationContext.xml配置文件中有一段实现BookTypeDAO接口实例的创建工厂，配置如下：
 ```
