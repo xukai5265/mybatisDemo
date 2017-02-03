@@ -40,3 +40,65 @@ typeAliases：数组类型，用来指定别名的。指定了这个属性后，
         </property>
 ```
 如果需要设置更多的属性则可以参考类型org.mybatis.spring.SqlSessionFactoryBean，如果不使用Spring，也不使用MyBatis配置文件我们照样可以获得一个sqlSessionFactory对象完成对MyBatis ORM框架的使用，因为可以直接实例化一个SqlSessionFactoryBean对象，只是此时该工作被Spring容器替代，按这个思路可以在SqlSessionFactoryBean类中找到更多的属性设置在applicationContext.xml配置中，部分源代码如下所示：
+```
+public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, InitializingBean, ApplicationListener<ApplicationEvent> {
+
+  private static final Log LOGGER = LogFactory.getLog(SqlSessionFactoryBean.class);
+
+  private Resource configLocation;
+
+  private Configuration configuration;
+
+  private Resource[] mapperLocations;
+
+  private DataSource dataSource;
+
+  private TransactionFactory transactionFactory;
+
+  private Properties configurationProperties;
+
+  private SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+
+  private SqlSessionFactory sqlSessionFactory;
+
+  //EnvironmentAware requires spring 3.1
+  private String environment = SqlSessionFactoryBean.class.getSimpleName();
+
+  private boolean failFast;
+
+  private Interceptor[] plugins;
+
+  private TypeHandler<?>[] typeHandlers;
+
+  private String typeHandlersPackage;
+
+  private Class<?>[] typeAliases;
+
+  private String typeAliasesPackage;
+
+  private Class<?> typeAliasesSuperType;
+
+  //issue #19. No default provider.
+  private DatabaseIdProvider databaseIdProvider;
+
+  private Class<? extends VFS> vfs;
+
+  private Cache cache;
+
+  private ObjectFactory objectFactory;
+
+  private ObjectWrapperFactory objectWrapperFactory;
+}
+```
+如果习惯两者结合使用，当然还是可以指定MyBatis配置文件的，增加属性：<property name="configLocation" value="classpath:MyBatisCfg.xml"></property>
+2. 映射接口类自动扫描配置
+在示例3的applicationContext.xml配置文件中有一段实现BookTypeDAO接口实例的创建工厂，配置如下：
+```
+    <!-- 创建一个booTypeDAO -->
+    <bean id="bookTypeDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <!--指定映射文件 -->
+        <property name="mapperInterface" value="com.zhangguo.Spring61.mapping.BookTypeDAO"></property>
+        <!-- 指定sql会话工厂 -->
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+```
