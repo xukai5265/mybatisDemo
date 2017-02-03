@@ -1,6 +1,6 @@
 # mybatisDemo3
 ## Spring集成MyBatis升级版
-1. 去掉MyBatisCfg.xml配置文件
+**1.去掉MyBatisCfg.xml配置文件**
 
 在没有Spring的环境下我们单纯使用MyBatis ORM框架时，我们是通过MyBatisCfg.xml完成sqlSessionFactory的构建工作，
 如果使用Spring则这部分配置的内容可以完全由Spring容器替代，具体实现如下：
@@ -93,7 +93,7 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
 ```
 如果习惯两者结合使用，当然还是可以指定MyBatis配置文件的，增加属性：<property name="configLocation" value="classpath:MyBatisCfg.xml"></property>
 
-2. 映射接口类自动扫描配置
+**2.映射接口类自动扫描配置**
 在示例3的applicationContext.xml配置文件中有一段实现BookTypeDAO接口实例的创建工厂，配置如下：
 ```
     <!-- 创建一个booTypeDAO -->
@@ -125,7 +125,7 @@ sqlSessionFactoryBeanName：它的功能跟sqlSessionFactory是一样的，只�
 sqlSessionTemplate： 已废弃 。它的功能也是相当于sqlSessionFactory的，MapperFactoryBean最终还是使用的SqlSession的getMapper方法取的对应的Mapper对象。当定义有多个SqlSessionTemplate的时候才需要指定它。对于一个MapperFactoryBean来说SqlSessionFactory和SqlSessionTemplate只需要其中一个就可以了，当两者都指定了的时候，SqlSessionFactory会被忽略。
 sqlSessionTemplateBeanName：指定需要使用的sqlSessionTemplate对应的bean名称。
 
-3. 引入属性配置文件db.properties
+**3.引入属性配置文件db.properties**
 从示例3的配置代码中可以发现数据库连接字符信息同时出现在两个位置，分别是applicationContext.xml与db.properties文件中，如下所示：
 ```
     <!--定义一个jdbc数据源，创建一个驱动管理数据源的bean -->
