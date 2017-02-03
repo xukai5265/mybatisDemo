@@ -17,9 +17,9 @@ public class TestMyBatisSpring01 {
         //初始化容器
         ApplicationContext ctx=new ClassPathXmlApplicationContext("ApplicationContext.xml");
         //获得bean
-        PersonMapper bookTypeDao = ctx.getBean(PersonMapper.class);
+        PersonMapper bookTypeDao=ctx.getBean(PersonMapper.class);
         //访问数据库
-        List<Person> booktypes = bookTypeDao.getAllPerson();
+        List<Person> booktypes=bookTypeDao.getAllPerson();
         for (Person bookType : booktypes) {
             System.out.println(bookType);
         }

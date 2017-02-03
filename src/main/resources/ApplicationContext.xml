@@ -8,28 +8,35 @@
         http://www.springframework.org/schema/context/spring-context-4.3.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+    <!--0属性占位文件引入，可以通过${属性名}获得属性文件中的内容-->
+    <context:property-placeholder location="classpath:db.properties"/>
 
     <!--1定义一个jdbc数据源，创建一个驱动管理数据源的bean -->
     <bean id="jdbcDataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/test" />
-        <property name="username" value="root" />
-        <property name="password" value="123456" />
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.uid}" />
+        <property name="password" value="${jdbc.pwd}" />
     </bean>
 
     <!--2创建一个sql会话工厂bean，指定数据源-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="jdbcDataSource" /><!-- 指定数据源 -->
-        <property name="configLocation" value="classpath:MyBatisCfg.xml"></property> <!-- 指定配置文件 -->
+        <!-- 1指定数据源 -->
+        <property name="dataSource" ref="jdbcDataSource" />
+        <!-- 2类型别名包，默认引入com.zhangguo.Spring61.entities下的所有类 -->
+        <property name="typeAliasesPackage" value="com.zhangguo.Spring61.entities"></property>
+        <!-- 3指定sql映射xml文件的路径 -->
+        <property name="mapperLocations"
+                  value="classpath:cn/xukai/spring/boot/entity/*Mapper.xml"></property>
     </bean>
 
-    <!--3创建一个booTypeDAO-->
-    <bean id="bookTypeDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <!--指定映射文件 -->
-        <property name="mapperInterface" value="cn.xukai.spring.boot.entity.PersonMapper"></property>
-        <!-- 指定sql会话工厂-->
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    <!--3自动扫描映射接口-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 指定sql会话工厂，在上面配置过的 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+        <!-- 指定基础包，即自动扫描com.zhangguo.Spring61.mapping这个包以及它的子包下的所有映射接口类 -->
+        <property name="basePackage" value="cn.xukai.spring.boot.entity"></property>
     </bean>
     <!--下面的配置暂时未使用 -->
     <context:component-scan base-package="cn.xukai">
