@@ -2,7 +2,7 @@
 mybatis maven 配置
 本文参照： http://www.cnblogs.com/best/archive/2016/07/04/5638827.html#_lab2_1_5
 ## 使用MyBatis完成MySQL数据库访问
-**1.添加依赖**
+**1.添加依赖**  
 要完成使用MyBatis访问MySQL数据库，需要添加一些依赖包，包含MyBatis3，连接驱动，JUnit，Log4j2等。可以去共享资源库中搜索，第一个网站地址是：http://mvnrepository.com/， 这里以搜索连接驱动为示例，搜索后的结果有5.xx版许多，也有6.xx版，但不建议使用6.xx版，因为MyBatis3不支持。
 ```
 pom.xml
@@ -233,7 +233,7 @@ public abstract class MyBatisUtil {
 
 ```
 
-**7.Mapper实现类 **
+**7.Mapper实现类**  
 
 ```
 public class PersonDaoImpl implements PersonMapper{
@@ -254,7 +254,7 @@ public class PersonDaoImpl implements PersonMapper{
 
 ```
 
-**8.测试 **
+**8.测试**  
 
 ```
 public class TestBookTypeDAOImpl {
@@ -275,7 +275,7 @@ public class TestBookTypeDAOImpl {
     }
 }
 ```
-**9.整合log4j2 **
+**9.整合log4j2**  
 
 面的测试虽然通过，但是有一个错误提示“ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console.”，大意是：日志记录器没有找到log4j2的配置文件。在源码的根目录下创建一个log4j2.xml配置文件，文件内容如下所示：
 ```
