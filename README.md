@@ -2,7 +2,7 @@
 ## Spring集成MyBatis升级第四版使用tk.mapper
 ## 目的： Mapper接口默认实现了一些增删改查的方法，可以提高开发效率。
 改动：
-1. pom.xml添加mapper依赖
+**1.pom.xml添加mapper依赖**
 ```
     <dependency>
       <groupId>tk.mybatis</groupId>
@@ -16,7 +16,7 @@
       <scope>test</scope>
     </dependency>
 ```
-2. 创建Dog实体类
+**2.创建Dog实体类**
 ```
 @Table(name = "dog")
 public class Dog {
@@ -26,13 +26,13 @@ public class Dog {
     @Column(name = "name")
     private String name;
 ```
-3. 创建DogMapper接口继承Mapper接口
+**3.创建DogMapper接口继承Mapper接口**
 ```
 @Component
 public interface DogMapper extends Mapper<Dog>{
 }
 ```
-4. 修改ApplicationContext.xml 扫描mapper的方式
+**4.修改ApplicationContext.xml 扫描mapper的方式**
 ```
 修改前：
 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -49,7 +49,7 @@ public interface DogMapper extends Mapper<Dog>{
     <property name="basePackage" value="cn.xukai.spring.boot.entity"></property>
 </bean>
 ```
-5. 测试
+**5.测试**
 ```
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
