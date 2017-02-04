@@ -11,8 +11,8 @@ MyBatis-Spring会帮助你将MyBatis代码无缝地整合到Spring中。
 使用这个类库中的类,Spring将会加载必要的MyBatis工厂类和session类。
 这个类库也提供一个简单的方式来注入MyBatis数据映射器和SqlSession到业务层的bean中。
 而且它也会处理事务,翻译MyBatis的异常到Spring的DataAccessException异常(数据访问异常,译者注)中。
-最终,它并不会依赖于MyBatis,Spring或MyBatis-Spring来构建应用程序代码。
-1. 修改pom.xml添加依赖  
+最终,它并不会依赖于MyBatis,Spring或MyBatis-Spring来构建应用程序代码。  
+**1. 修改pom.xml添加依赖  **
 为了将Spring与MyBatis整合完成，需要依赖MyBatis，因为在上面的示例中已依赖完成，这里就不再需要，主要需依赖的是Spring核心，AOP，JDBC，MyBatis-Spring等jar包。具体的依赖结果pom.xml文件如下所示：
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -80,7 +80,7 @@ MyBatis-Spring会帮助你将MyBatis代码无缝地整合到Spring中。
     </dependencies>
 </project>
 ```
-2. 创建Spring上线文初始化配置文件
+**2. 创建Spring上线文初始化配置文件**
 该文件取名为ApplicationContext.xml主要原因是“约束优于配置”的理由，使用Web监听器加载Spring时会默认找该名称的文件。在文件中我们可像以前学习Spring一样配置IOC与AOP，只不过这里整合了一些MyBatis内容。文件内容如下：
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -122,7 +122,7 @@ MyBatis-Spring会帮助你将MyBatis代码无缝地整合到Spring中。
     <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
 </beans>
 ```
-3. 运行测试
+**3. 运行测试**
 ```
 public class TestMyBatisSpring01 {
     @Test
