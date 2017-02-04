@@ -102,7 +102,7 @@ pom.xml
   </build>
 </project>
 ```
-**2.准备数据**
+**2.准备数据**  
 ```
 CREATE TABLE `person` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
@@ -112,7 +112,7 @@ CREATE TABLE `person` (
 
 ```
 
-**3.创建java Bean**
+**3.创建java Bean**  
 ```
 public class Person {
     private String id;
@@ -144,7 +144,7 @@ public class Person {
     }
 }
 ```
-**4.创建实体与表的映射文件**
+**4.创建实体与表的映射文件**  
 这里用接口+XML的形式完成，BookType数据访问接口如下：
 ```
 public interface PersonMapper{
@@ -162,7 +162,7 @@ PersonMapper.xml
     </select>
 </mapper>
 ```
-**5.创建MyBatisCfg.xml文件**
+**5.创建MyBatisCfg.xml文件**  
 MyBatisCfg.xml文件用于配置MyBatis的运行环境，内容如下：
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -200,7 +200,7 @@ url=jdbc:mysql://localhost:3306/test
 username=root
 password=root
 ```
-**6.实现数据访问功能**
+**6.实现数据访问功能**  
 为了更加方便的复用MyBatis实现数据访问不需要频繁的创建SQLSessionFactory和SQLSession对象，封装一个MyBatisUtil工具类如下：
 ```
 public abstract class MyBatisUtil {
