@@ -111,7 +111,8 @@ CREATE TABLE `person` (
 ) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
 
 ```
-**3.创建java Bean **
+
+**3.创建java Bean**
 ```
 public class Person {
     private String id;
