@@ -13,7 +13,8 @@ MyBatis-Spring会帮助你将MyBatis代码无缝地整合到Spring中。
 而且它也会处理事务,翻译MyBatis的异常到Spring的DataAccessException异常(数据访问异常,译者注)中。
 最终,它并不会依赖于MyBatis,Spring或MyBatis-Spring来构建应用程序代码。  
 
-**1. 修改pom.xml添加依赖  **
+**1. 修改pom.xml添加依赖  **  
+
 为了将Spring与MyBatis整合完成，需要依赖MyBatis，因为在上面的示例中已依赖完成，这里就不再需要，主要需依赖的是Spring核心，AOP，JDBC，MyBatis-Spring等jar包。具体的依赖结果pom.xml文件如下所示：
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
