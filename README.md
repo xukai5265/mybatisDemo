@@ -82,7 +82,7 @@ MyBatis-Spring会帮助你将MyBatis代码无缝地整合到Spring中。
     </dependencies>
 </project>
 ```
-**2. 创建Spring上线文初始化配置文件**
+**2. 创建Spring上线文初始化配置文件**  
 该文件取名为ApplicationContext.xml主要原因是“约束优于配置”的理由，使用Web监听器加载Spring时会默认找该名称的文件。在文件中我们可像以前学习Spring一样配置IOC与AOP，只不过这里整合了一些MyBatis内容。文件内容如下：
 ```
 <?xml version="1.0" encoding="UTF-8"?>
