@@ -233,7 +233,8 @@ public abstract class MyBatisUtil {
 
 ```
 
-**7.Mapper实现类 **  
+**7.Mapper实现类 **
+
 ```
 public class PersonDaoImpl implements PersonMapper{
 
@@ -254,6 +255,7 @@ public class PersonDaoImpl implements PersonMapper{
 ```
 
 **8.测试 **
+
 ```
 public class TestBookTypeDAOImpl {
     static PersonMapper bookTypeDao;
@@ -273,8 +275,8 @@ public class TestBookTypeDAOImpl {
     }
 }
 ```
-
 **9.整合log4j2 **
+
 面的测试虽然通过，但是有一个错误提示“ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console.”，大意是：日志记录器没有找到log4j2的配置文件。在源码的根目录下创建一个log4j2.xml配置文件，文件内容如下所示：
 ```
 <?xml version="1.0" encoding="UTF-8"?>
