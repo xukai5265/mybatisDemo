@@ -203,17 +203,6 @@ password=root
 **6.实现数据访问功能**
 为了更加方便的复用MyBatis实现数据访问不需要频繁的创建SQLSessionFactory和SQLSession对象，封装一个MyBatisUtil工具类如下：
 ```
-package cn.xukai.spring.boot.utils;
-
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import java.io.InputStream;
-
-/**
- * Created by xukai on 2017/2/3.
- */
 public abstract class MyBatisUtil {
     //GC不理static
     private static SqlSessionFactory factory=null;
@@ -243,6 +232,7 @@ public abstract class MyBatisUtil {
 }
 
 ```
+
 **7.Mapper实现类 **  
 ```
 public class PersonDaoImpl implements PersonMapper{
@@ -262,6 +252,7 @@ public class PersonDaoImpl implements PersonMapper{
 }
 
 ```
+
 **8.测试 **
 ```
 public class TestBookTypeDAOImpl {
@@ -282,6 +273,7 @@ public class TestBookTypeDAOImpl {
     }
 }
 ```
+
 **9.整合log4j2 **
 面的测试虽然通过，但是有一个错误提示“ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console.”，大意是：日志记录器没有找到log4j2的配置文件。在源码的根目录下创建一个log4j2.xml配置文件，文件内容如下所示：
 ```
