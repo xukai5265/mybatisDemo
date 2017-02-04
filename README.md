@@ -1,7 +1,7 @@
 # mybatisDemo4
 ## Spring集成MyBatis升级第四版使用tk.mapper
 ## 目的： Mapper接口默认实现了一些增删改查的方法，可以提高开发效率。
-改动：
+改动：  
 **1.pom.xml添加mapper依赖**
 ```
     <dependency>
@@ -16,7 +16,7 @@
       <scope>test</scope>
     </dependency>
 ```
-**2.创建Dog实体类**
+**2.创建Dog实体类**  
 ```
 @Table(name = "dog")
 public class Dog {
